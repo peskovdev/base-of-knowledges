@@ -37,7 +37,6 @@ Host github.com
   IdentityFile ~/.ssh/github-key
   IdentitiesOnly yes
 ``` 
----
 <a name='settings'></a>
 Важно дать корректное название хосту ведь когда мы добавляем
 удаленный доступ к гит-репозиторию, мы выполняем:
