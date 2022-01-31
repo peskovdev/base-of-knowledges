@@ -1,5 +1,11 @@
 # Git - Шпаргалка
 
+Конфиг:
+```
+git config --global user.name 'inauris'
+git config --global user.email 'inauris@protonmail.com'
+```
+
 Создание ветки: 
 ```
 git branch name
