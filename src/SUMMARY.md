@@ -1,4 +1,4 @@
-# База знаний - inauris
+# База знаний
 
 - [Содержание](SUMMARY.md)
 - [TTY-tools](tty-tools/README.md)

@@ -3,7 +3,7 @@ authors = ['inauris']
 language = 'ru'
 multilingual = false
 src = 'src'
-title = 'База знаний - inauris'
+title = 'База знаний: inauris'
 
 [build]
 build-dir = 'public'
