@@ -3,19 +3,11 @@ authors = ['inauris']
 language = 'ru'
 multilingual = false
 src = 'src'
-title = 'GitLab Pages mdbook'
+title = 'База знаний - inauris'
 
 [build]
 build-dir = 'public'
-# create-missing = false
 
 [preprocessor.toc]
 command = './mdbook-toc'
 renderer = ['html']
-
-# [output.html.playpen]
-# copyable = false
-# editable = true
-
-# [output.html.fold]
-# enable = true

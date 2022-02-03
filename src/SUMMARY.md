@@ -1,6 +1,8 @@
+# Документооборот - КУК
+
 - [Содержание](SUMMARY.md)
-
-
-- [git](git.md)
-- [git(hub|lab) pages](github-pages.md)
-- [SSH-auth](ssh-keys.md)
+- [TTY-tools]()
+  - [Git](tty-tools/git.md)
+  - [SSH-auth](tty-tools/ssh-keys.md)
+- [Servers]()
+  - [Static website on git-services](tty-tools/git-servs-pages.md)
