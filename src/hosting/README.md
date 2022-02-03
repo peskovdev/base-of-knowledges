@@ -1,6 +1,6 @@
-# Individual Common mark tags
+# Hosting section
 
-This contains following tags:
+Здесь лежать следущие темы:
 
 - Hosting on git-services (g-hub, g-lab)
 - SSH-authentication

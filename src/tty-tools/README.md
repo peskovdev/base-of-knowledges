@@ -1,5 +1,5 @@
-# Individual Common mark tags
+# Секция с консольными утилитами.
 
-This contains following tags:
+В этой секции рассмотрены следующие программы:
 
 - git

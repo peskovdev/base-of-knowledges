@@ -1,4 +1,4 @@
-# Документооборот - КУК
+# База знаний - inauris
 
 - [Содержание](SUMMARY.md)
 - [TTY-tools](tty-tools/README.md)
