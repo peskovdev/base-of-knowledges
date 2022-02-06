@@ -6,8 +6,13 @@
     - [Стянуть ветку из удаленного репа](#fetch-branch)
     - [Удалить ветку](#delete-branch)
     - [Переключить ветку](#switch-branch)
-  - [](#)
-  - [](#)
+  - [Коммиты](#commits)
+    - [Отменить коммит](#cancelCommit)
+    - [Коммит без 'add'](#commits!add)
+    - [Удалить только в index](#rmCache)
+  - [Удаление файлов](#deleting)
+    - [git rm](#deleteWithGit)
+  - [Переименование файлов](#renaming)
 ---
 
 ## <a name='config'></a> Конфиг:
@@ -17,6 +22,7 @@ git config --global user.email 'inauris@protonmail.com'
 git config --global core.editor 'nvim'
 ```
 
+---
 ## <a name='branch'></a> Работа с ветками:
 #### <a name='creating-branch'></a> Создание ветки:
 ```
@@ -44,5 +50,49 @@ git branch -D name
 git checkout name
 git switch name
 ```
+---
 
-#### <a name=''></a> 
+## <a name='commits'></a> Коммиты:
+
+#### <a name='cancelCommit'></a> Отменить коммит
+```
+# Оставить изменения
+git reset --soft HEAD~
+
+# Удалить изменения
+git reset --hard HEAD~
+```
+#### <a name='commits!add'></a> Коммит без 'add'
+```
+git commit -a
+git commit path/to/file.type
+
+alias.commitall '!git add .[-A]; git commit'
+```
+
+#### <a name='rmCache'></a> Удалить только в index
+```
+git rm -r --cached name
+```
+---
+
+## <a name='deleting'></a> Удаление:
+Для удаления файла достаточно удалить файлы и добавить изменения в индекс.
+Дальше сможем закомитить (Чтоб изменения прошли - ветка должна быть с ребейзом)
+
+#### <a name='deleteWithGit'></a> Гитовское удаление:
+Удаляет не только из воркспейса, но и из индекса
+```
+git rm path/to/name
+
+flags:
+  -r # for directory
+  -f #forse
+  -- cached # only index
+```
+
+#### <a name='renaming'></a> Переименование:
+Можно просто переименовать и проиндексировать старый 'удаленный' и 'новый' файл
+При попадании в индекс гит по-контрольной сумме определит что это переименование
+Для того чтоб переименование произошло сразу можно использовать команду:
+```
