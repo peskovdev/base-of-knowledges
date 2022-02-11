@@ -20,6 +20,7 @@
 git config --global user.name 'inauris'
 git config --global user.email 'inauris@protonmail.com'
 git config --global core.editor 'nvim'
+git config --global core.excludesFile ~/.gitignore
 ```
 
 ---
