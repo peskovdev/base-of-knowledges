@@ -2,8 +2,8 @@
 
 How to create unit from python with venv:
 
-- Create `/lib/systemd/system/krolya.service`
-- Write:
+- Create `/lib/systemd/user/name.service`
+- Content:
   ```
   [Unit]
   Description=Krolya - Telegram bot
@@ -12,11 +12,23 @@ How to create unit from python with venv:
   [Service]
   Type=idle
   Restart=on-failure
-  User=root
   ExecStart=/bin/bash -c 'cd /home/inauris/projects/krolya && source ./venv/bin/activate && python krolya.py'
  
   [Install]
   WantedBy=multi-user.target
   ```
+  or
+  ```
+  [Unit]
+  Description=Auto git pull
+  After=network.target
+  
+  [Service]
+  Type=simple
+  ExecStart=/bin/bash -c '/home/inauris/.local/bin/auto-git-pull'
+  
+  [Install]
+  WantedBy=multi-user.target
+  ```
 - `sudo systemctl daemon-reload`
-- `sudo systemctl [status, start, stop, enable, disable] name`
+- `systemctl --user [start, stop, enable, disable] name`
