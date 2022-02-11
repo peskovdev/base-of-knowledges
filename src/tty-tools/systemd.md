@@ -16,9 +16,9 @@ How to create unit from python with venv:
  
   [Install]
   WantedBy=multi-user.target
-  ```
+  
   or
-  ```
+  
   [Unit]
   Description=Auto git pull
   After=network.target
