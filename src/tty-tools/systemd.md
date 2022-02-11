@@ -14,7 +14,6 @@ How to create unit from python with venv:
   Restart=on-failure
   User=root
   ExecStart=/bin/bash -c 'cd /home/inauris/projects/freedom-pride-chat/crypto-kroleg && source ./venv/bin/activate && python bot.py'
-  ExecReload=/usr/bin/node index.js
 
   [Install]
   WantedBy=multi-user.target
