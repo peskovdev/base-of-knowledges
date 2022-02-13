@@ -4,7 +4,7 @@ How to create unit from python with venv:
 
 - Create `/lib/systemd/user/name.service`
 - Content:
-  ~~~
+  ~~~~
   [Unit]
   Description=Krolya - Telegram bot
   After=network.target
@@ -29,6 +29,6 @@ How to create unit from python with venv:
   
   [Install]
   WantedBy=multi-user.target
-  ~~~
+  ~~~~
 - `sudo systemctl daemon-reload`
 - `systemctl --user [start, stop, enable, disable] name`
