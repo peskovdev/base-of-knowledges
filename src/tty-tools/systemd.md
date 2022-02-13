@@ -12,7 +12,7 @@ How to create unit from python with venv:
   [Service]
   Type=idle
   Restart=on-failure
-  ExecStart=/bin/bash -c 'cd /home/inauris/projects/krolya && source ./venv/bin/activate && python krolya.py'
+  ExecStart=/bin/bash -c "cd /home/inauris/projects/krolya && source ./venv/bin/activate && python krolya.py"
  
   [Install]
   WantedBy=multi-user.target
