@@ -9,7 +9,6 @@
   - [imagemagick](tty-tools/imagemagick.md)
   - [ffmpeg](tty-tools/ffmpeg.md)
   - [youtube-dl](tty-tools/youtube-dl.md)
-  - [systemd unit](tty-tools/systemd.md)
 - [Programming](programming/README.md)
   - [Django](programming/django.md)
   - [Errors](programming/errors.md)
