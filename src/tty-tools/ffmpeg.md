@@ -22,3 +22,6 @@ ffmpeg -i .wav -codec:a libmp3lame -qscale:a 2 .mp3
 ```
 ffmpeg -i .mp4. .gif
 ```
+
+#### Полезные ссылки:
+[Больше команд на losst.ru](https://losst.ru/poleznye-komandy-ffmpeg)
