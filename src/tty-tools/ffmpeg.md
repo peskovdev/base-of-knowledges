@@ -20,7 +20,7 @@ ffmpeg -i .wav -codec:a libmp3lame -qscale:a 2 .mp3
 
 ## Конвертация видео в gif
 ```
-ffmpeg -i .mp4. .gif
+ffmpeg -i .mp4 .gif
 ```
 
 #### Полезные ссылки:
