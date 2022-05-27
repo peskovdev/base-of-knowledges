@@ -13,6 +13,7 @@
   - [Удаление файлов](#deleting)
     - [git rm](#deleteWithGit)
   - [Переименование файлов](#renaming)
+  - [Игнор изменений файлов остающихся в репе](#ignore-exist)
 ---
 
 ## <a name='config'></a> Конфиг:
@@ -98,4 +99,9 @@ flags:
 Для того чтоб переименование произошло сразу можно использовать команду:
 ```
 git mv hello.html index.html
+```
+#### <a name='ignore-exist'></a> Игнор изменений файлов остающихся в репе:
+Файл будет оставаться в репозитории, но гит будет игнорить изменения:
+```
+git update-index --assume-unchanged flameshot/.config/flameshot/flameshot.ini
 ```
