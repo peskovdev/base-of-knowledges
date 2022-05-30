@@ -10,6 +10,8 @@
   - [ffmpeg](tty-tools/ffmpeg.md)
   - [youtube-dl](tty-tools/youtube-dl.md)
   - [unit-systemd](tty-tools/systemd.md)
+- [Tech](tech/README.md)
+  - [Многопроцессорность, асинхронность итд](programming/async.md)
 - [Programming](programming/README.md)
   - [Django](programming/django.md)
   - [Errors](programming/errors.md)
