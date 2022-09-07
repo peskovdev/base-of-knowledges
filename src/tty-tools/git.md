@@ -1,10 +1,13 @@
 # Git - Шпаргалка
 ### Содержание:
   - [Настройка конфига](#config)
+  - [Remote](#remote)
+    - [Смена url](#set-url)
   - [Работа с ветками](#branch)
     - [Создание новой ветки](#creating-branch)
     - [Стянуть ветку из удаленного репа](#fetch-branch)
     - [Удалить ветку](#delete-branch)
+    - [Удалить ветку в удаленном репозитории](#delete-remote-branch)
     - [Переключить ветку](#switch-branch)
   - [Коммиты](#commits)
     - [Отменить коммит](#cancelCommit)
@@ -24,6 +27,11 @@ git config --global core.editor 'nvim'
 git config --global core.excludesFile ~/.gitignore
 ```
 
+## <a name='remote'></a> Remote:
+#### <a name='set-url'></a> Смена url:
+```
+git remote set-url origin git@gitlab.com:freedom-pride-chat/pheidippides.git
+```
 ---
 ## <a name='branch'></a> Работа с ветками:
 #### <a name='creating-branch'></a> Создание ветки:
@@ -45,6 +53,10 @@ git switch -c name origin/name
 #### <a name='delete-branch'></a> Удаление ветки:
 ```
 git branch -D name
+```
+#### <a name='delete-remote-branch'></a> Удаление ветки удаленного репозитория:
+```
+gp origin --delete origin/name
 ```
 
 #### <a name='switch-branch'></a> Переключение ветки:
@@ -95,7 +107,7 @@ flags:
 
 #### <a name='renaming'></a> Переименование:
 Можно просто переименовать и проиндексировать старый 'удаленный' и 'новый' файл
-При попадании в индекс гит по-контрольной сумме определит что это переименование
+При попадании в индекс гит по-контрольной сумме определит что это переименование.
 Для того чтоб переименование произошло сразу можно использовать команду:
 ```
 git mv hello.html index.html
