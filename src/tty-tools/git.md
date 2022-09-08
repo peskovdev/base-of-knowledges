@@ -11,6 +11,7 @@
     - [Переключить ветку](#switch-branch)
   - [Коммиты](#commits)
     - [Отменить коммит](#cancelCommit)
+    - [Изменить сообщение коммита](#renameCommit)
     - [Коммит без 'add'](#commits!add)
     - [Удалить только в index](#rmCache)
   - [Удаление файлов](#deleting)
@@ -75,6 +76,16 @@ git reset --soft HEAD~
 
 # Удалить изменения
 git reset --hard HEAD~
+```
+#### <a name='renameCommit'></a> Изменить сообщение коммита
+```
+git commit --amend
+
+# если хотите запушить изменение на удаленный репозиторий:
+gp -f
+
+# если ввели локально, но потом передумали:
+git pull --rebase
 ```
 #### <a name='commits!add'></a> Коммит без 'add'
 ```
