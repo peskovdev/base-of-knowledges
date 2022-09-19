@@ -31,7 +31,7 @@ git config --global core.excludesFile ~/.gitignore
 ## <a name='remote'></a> Remote:
 #### <a name='set-url'></a> Смена url:
 ```
-git remote set-url origin git@gitlab.com:freedom-pride-chat/pheidippides.git
+git remote set-url origin gitLink
 ```
 ---
 ## <a name='branch'></a> Работа с ветками:
