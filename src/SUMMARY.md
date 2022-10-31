@@ -8,6 +8,7 @@
   - [ffmpeg](tty-tools/ffmpeg.md)
   - [youtube-dl](tty-tools/youtube-dl.md)
   - [unit-systemd](tty-tools/systemd.md)
+  - [xev](tty-tools/xev.md)
 - [Arch](arch/README.md)
   - [Pacman](arch/pacman.md)
   - [Yay](arch/yay.md)
