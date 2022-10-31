@@ -18,6 +18,7 @@ ExecStart=/bin/bash -c 'cd /home/inauris/projects/krolya && source ./venv/bin/ac
 [Install]
 WantedBy=multi-user.target
 ```
+- открыть такой файл: `path_to_file.py`
 
 ---
 #### How to autorun script as unit:

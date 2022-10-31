@@ -5,7 +5,5 @@
 - git
 - ffmpeg
 - imagemagick
-- pacman
-- yay
 - youtube-dl
 - bash
