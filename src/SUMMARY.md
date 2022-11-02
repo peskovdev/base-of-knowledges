@@ -21,4 +21,5 @@
   - [Sql](programming/sql.md)
 - [Hosting](hosting/README.md)
   - [SSH-authentication](hosting/ssh-keys.md)
+  - [SSH-vps-access](hosting/ssh-vps-access.md)
   - [Static website on git-services](hosting/git-servs-pages.md)
