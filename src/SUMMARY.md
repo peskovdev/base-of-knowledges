@@ -1,6 +1,8 @@
 # База знаний
 
 - [Содержание](SUMMARY.md)
+- [Python](python/README.md)
+  - [Interpreter](python/interpreter.py)
 - [TTY-tools](tty-tools/README.md)
   - [Git](tty-tools/git.md)
   - [Bash](tty-tools/bash.md)
