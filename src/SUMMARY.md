@@ -2,7 +2,8 @@
 
 - [Содержание](SUMMARY.md)
 - [Python](python/README.md)
-  - [Interpreter](python/interpreter.py)
+  - [Interpreter](python/interpreter.md)
+  - [Introduction](python/introduction.md)
 - [TTY-tools](tty-tools/README.md)
   - [Git](tty-tools/git.md)
   - [Bash](tty-tools/bash.md)
