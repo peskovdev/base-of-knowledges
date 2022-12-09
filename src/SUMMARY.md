@@ -5,6 +5,7 @@
   - [Interpreter](python/interpreter.md)
   - [Introduction](python/introduction.md)
   - [Flow tools](python/flow_tools.md)
+  - [Flow tools](python/data_structures.md)
 - [TTY-tools](tty-tools/README.md)
   - [Git](tty-tools/git.md)
   - [Bash](tty-tools/bash.md)
