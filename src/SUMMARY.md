@@ -8,6 +8,7 @@
   - [Flow tools](python/data_structures.md)
 - [TTY-tools](tty-tools/README.md)
   - [Git](tty-tools/git.md)
+  - [Docker](tty-tools/docker.md)
   - [Bash](tty-tools/bash.md)
   - [imagemagick](tty-tools/imagemagick.md)
   - [ffmpeg](tty-tools/ffmpeg.md)
