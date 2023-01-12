@@ -53,11 +53,11 @@ DROP TABLE bicycle;
   ```
 - FOREIGN KEY
   ```
-  # Define
+  // Define
   ALTER TABLE employee ADD bicycle_id BIGINT REFERENCES bicycle (id);
   ALTER TABLE employee ADD UNIQUE(bicycle_id);
 
-  # Create entry
+  // Create entry
   UPDATE employee SET bicycle_id = 2 WHERE id=4;
   ```
 - UNIQUE
@@ -99,9 +99,9 @@ DROP TABLE bicycle;
   ```
 - LIMIT
   ```
-  ## Will return from 11th to 15th employees
+  // Will return from 11th to 15th employees
   SELECT * FROM employee OFFSET 10 LIMIT 5;
-  ## or
+  // or
   SELECT * FROM employee OFFSET 10 FETCH FIRST 5 ROW ONLY;
   ```
 - IN - is short version of OR-OR-OR
@@ -137,19 +137,19 @@ DROP TABLE bicycle;
 
 ##### Joins
 ```
-# inner
+// inner
 SELECT employee.first_name, bicycle.make, bicycle.type, bicycle.price FROM employee
 JOIN bicycle ON employee.bicycle_id = bicycle.id;
 
-# left
+// left
 SELECT employee.first_name, bicycle.make, bicycle.type, bicycle.price FROM employee
 LEFT JOIN bicycle ON employee.bicycle_id = bicycle.id;
 
-# right
+// right
 SELECT employee.first_name, bicycle.make, bicycle.type, bicycle.price FROM employee
 RIGHT JOIN bicycle ON employee.bicycle_id = bicycle.id;
 
-# full
+// full
 SELECT employee.first_name, bicycle.make, bicycle.type, bicycle.price FROM employee
 FULL OUTER JOIN bicycle ON employee.bicycle_id = bicycle.id;
 ```
@@ -162,12 +162,12 @@ FULL OUTER JOIN bicycle ON employee.bicycle_id = bicycle.id;
   ```
 - Go to the past on expressed time
   ```
-  ## (For future use "+")
+  // (For future use "+")
   SELECT NOW() - INTERVAL '10 {YEAR, MONTHS, DAYS}';
   ```
 - Get specific parameter from data
   ```
-  # Possible parameters: (day of the week (first sunday))
+  // Possible parameters: (day of the week (first sunday))
   SELECT EXTRACT({YEAR, MONTH, DAY, DOW} FROM NOW());
   ```
 - get difference between 2 dates - AGE
@@ -179,7 +179,6 @@ FULL OUTER JOIN bicycle ON employee.bicycle_id = bicycle.id;
 ## <a name='dml'></a> Data Manipulation Language, DML
 ##### INSERT
 ```
-### INSERT
 INSERT INTO employee (first_name, last_name, gender, email, date_of_birth, country_of_birth) VALUES ('Ari', 'Hay', 'Male', 'panda@pcworld.com', '2022/07/27', 'USA');
 ```
 
@@ -195,7 +194,7 @@ UPDATE employee SET gender='Psycho' WHERE gender in ('Genderqueer', 'Panda', 'Bi
 
 ##### ON CONFLICT DO
 ```
-### UPDATE IF ENTRY EXIST (UPSERT)
+// UPDATE IF ENTRY EXIST (UPSERT)
 INSERT INTO employee (id, first_name, last_name, gender, email, date_of_birth, country_of_birth)
 VALUES (1, 'Jocker', 'Doe', 'Male', 'john.doe@google.com', DATE '2019-12-10', 'Russia')
 ON CONFLICT (id) DO UPDATE SET email = EXCLUDED.email, first_name = EXCLUDED.first_name, gender = EXCLUDED.gender;
@@ -229,10 +228,10 @@ TO '/home/inauris/projects/1.csv' DELIMITER ',' CSV;
   ```
 - Usage example:
   ```
-  # see result
+  // see result
   SELECT uuid_generate_v4();
 
-  # practical usage
+  // practical usage
   INSERT INTO passport (passport_serial, issue_date, expire_date, country_of_issue) VALUES
   (uuid_generate_v4(), '2020_09_03', '2045_09_03', 'USA');
   ```
