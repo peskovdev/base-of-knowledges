@@ -23,7 +23,7 @@
 
 ## <a name='ddl'></a> Data Definition Language, DDL
 
-##### <a name='cdtables'></a> CREATE/DELETE tables
+#### <a name='cdtables'></a> CREATE/DELETE tables
 ```
 CREATE TABLE employee (
 id BIGSERIAL NOT NULL PRIMARY KEY,
@@ -45,29 +45,29 @@ DROP TABLE employee;
 DROP TABLE bicycle;
 ```
 
-##### <a name='constraints'></a> ADD/DELETE CONSTRAINTS:
+#### <a name='constraints'></a> ADD/DELETE CONSTRAINTS:
 - PRIMARY KEY
   ```
   ALTER TABLE employee DROP CONSTRAINT employee_pkey;
   ALTER TABLE employee ADD PRIMARY KEY(id);
   ```
 - FOREIGN KEY
-  ```
-  // Define
-  ALTER TABLE employee ADD bicycle_id BIGINT REFERENCES bicycle (id);
-  ALTER TABLE employee ADD UNIQUE(bicycle_id);
+```
+// Define
+ALTER TABLE employee ADD bicycle_id BIGINT REFERENCES bicycle (id);
+ALTER TABLE employee ADD UNIQUE(bicycle_id);
 
-  // Create entry
-  UPDATE employee SET bicycle_id = 2 WHERE id=4;
-  ```
+// Create entry
+UPDATE employee SET bicycle_id = 2 WHERE id=4;
+```
 - UNIQUE
-  ```
-  ALTER TABLE employee ADD CONSTRAINT unique_email_address UNIQUE (email);
-  ```
+```
+ALTER TABLE employee ADD CONSTRAINT unique_email_address UNIQUE (email);
+```
 - ONLY SPECIFIC VALUE
-  ```
-  ALTER TABLE employee ADD CONSTRAINT gender_constraint CHECK (gender = 'Female' OR gender = 'Male' OR gender = 'Psycho');
-  ```
+```
+ALTER TABLE employee ADD CONSTRAINT gender_constraint CHECK (gender = 'Female' OR gender = 'Male' OR gender = 'Psycho');
+```
 
 -----------------------------------------------------
 ## <a name='dql'></a> Data Query Language, DQL
@@ -135,7 +135,7 @@ DROP TABLE bicycle;
   SELECT num1 {*, \, +, -, %, !} num2
   ```
 
-##### Joins
+#### Joins
 ```
 // inner
 SELECT employee.first_name, bicycle.make, bicycle.type, bicycle.price FROM employee
@@ -155,44 +155,44 @@ FULL OUTER JOIN bicycle ON employee.bicycle_id = bicycle.id;
 ```
 ![screen](../static/sql_joins.png)
 
-##### Date
+#### Date
 - Just get date()
-  ```
-  SELECT NOW()[::{DATE, TIME}];
-  ```
+```
+SELECT NOW()[::{DATE, TIME}];
+```
 - Go to the past on expressed time
-  ```
-  // (For future use "+")
-  SELECT NOW() - INTERVAL '10 {YEAR, MONTHS, DAYS}';
-  ```
+```
+// (For future use "+")
+SELECT NOW() - INTERVAL '10 {YEAR, MONTHS, DAYS}';
+```
 - Get specific parameter from data
-  ```
-  // Possible parameters: (day of the week (first sunday))
-  SELECT EXTRACT({YEAR, MONTH, DAY, DOW} FROM NOW());
-  ```
+```
+// Possible parameters: (day of the week (first sunday))
+SELECT EXTRACT({YEAR, MONTH, DAY, DOW} FROM NOW());
+```
 - get difference between 2 dates - AGE
-  ```
-  SELECT first_name, last_name, gender, country_of_birth, AGE(NOW(), date_of_birth) as age FROM employee;
-  ```
+```
+SELECT first_name, last_name, gender, country_of_birth, AGE(NOW(), date_of_birth) as age FROM employee;
+```
 
 -----------------------------------------------------
 ## <a name='dml'></a> Data Manipulation Language, DML
-##### INSERT
+#### INSERT
 ```
 INSERT INTO employee (first_name, last_name, gender, email, date_of_birth, country_of_birth) VALUES ('Ari', 'Hay', 'Male', 'panda@pcworld.com', '2022/07/27', 'USA');
 ```
 
-##### DELETE
+#### DELETE
 ```
 DELETE FROM employee WHERE email LIKE '%@google%' AND country_of_birth = 'China';
 ```
 
-##### UPDATE
+#### UPDATE
 ```
 UPDATE employee SET gender='Psycho' WHERE gender in ('Genderqueer', 'Panda', 'Bigender', 'Genderfluid', 'Polygender', 'Non-binary', 'Agender');
 ```
 
-##### ON CONFLICT DO
+#### ON CONFLICT DO
 ```
 // UPDATE IF ENTRY EXIST (UPSERT)
 INSERT INTO employee (id, first_name, last_name, gender, email, date_of_birth, country_of_birth)
@@ -205,33 +205,33 @@ P.S. Also possible ways:
 
 -----------------------------------------------------
 ## <a name='postgres_tools'></a> Postgress tools
-##### <a name='extension'></a> Common syntax
+#### <a name='extension'></a> Common syntax
 - `\d [table_name]` - see all tables, or structure of specific table
 - `\dt` - see all tables, but without additional
 - `\i /path/to/file.sql` - import file, and execute content
 - `\copy ... TO /path/to/dump_file` - for dump
 
-##### <a name='csv'></a> DUMP TO CSV
+#### <a name='csv'></a> DUMP TO CSV
 ```
 \copy (SELECT * FROM employee JOIN bicycle ON employee.bicycle_id = bicycle.id)
 TO '/home/inauris/projects/1.csv' DELIMITER ',' CSV;
 ```
 
-##### <a name='extension'></a> Extensions
+#### <a name='extension'></a> Extensions
 - See list of extensions:
-  ```
-  SELECT * FROM pg_available_extensions;
-  ```
+```
+SELECT * FROM pg_available_extensions;
+```
 - Install extension:
-  ```
-  CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
-  ```
+```
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+```
 - Usage example:
-  ```
-  // see result
-  SELECT uuid_generate_v4();
+```
+// see result
+SELECT uuid_generate_v4();
 
-  // practical usage
-  INSERT INTO passport (passport_serial, issue_date, expire_date, country_of_issue) VALUES
-  (uuid_generate_v4(), '2020_09_03', '2045_09_03', 'USA');
-  ```
+// practical usage
+INSERT INTO passport (passport_serial, issue_date, expire_date, country_of_issue) VALUES
+(uuid_generate_v4(), '2020_09_03', '2045_09_03', 'USA');
+```
