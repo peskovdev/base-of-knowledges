@@ -6,8 +6,25 @@
     - [CONSTRAINTS](#constraints)
       - PRIMARY/FOREIGN KEYS, UNIQUE, CHECK
   - [Data Query Language, DQL](#dql)
-    - [GROUP BY & HAVING](#groupby)
+    - [SELECT](#dql)
+      - [Common syntax](#common)
+      - [ORDER BY](#orderby)
+      - [DISTINCT](#distinct)
+      - [WHERE](#where)
+      - [LIMIT](#limit)
+      - [IN](#in)
+      - [BETWEEN](#between)
+      - [LIKE & ILIKE](#like)
+      - [GROUP BY & HAVING](#groupby)
+      - [COALESCE](#coalesce)
+      - [Math operations](#math)
+      - [JOIN](#join)
+    - [Date](#date)
   - [Data Manipulation Language, DML](#dml)
+    - [INSERT](#insert)
+    - [UPDATE](#update)
+    - [DELETE](#delete)
+    - [CONFLICT](#conflict)
   - [Postgres tools](#postgres_tools)
     - [Common syntax](#syntax)
     - [Dump to CSV](#csv)
@@ -47,10 +64,10 @@ DROP TABLE bicycle;
 
 #### <a name='constraints'></a> ADD/DELETE CONSTRAINTS:
 - PRIMARY KEY
-  ```
-  ALTER TABLE employee DROP CONSTRAINT employee_pkey;
-  ALTER TABLE employee ADD PRIMARY KEY(id);
-  ```
+```
+ALTER TABLE employee DROP CONSTRAINT employee_pkey;
+ALTER TABLE employee ADD PRIMARY KEY(id);
+```
 - FOREIGN KEY
 ```
 // Define
@@ -69,10 +86,10 @@ ALTER TABLE employee ADD CONSTRAINT unique_email_address UNIQUE (email);
 ALTER TABLE employee ADD CONSTRAINT gender_constraint CHECK (gender = 'Female' OR gender = 'Male' OR gender = 'Psycho');
 ```
 
------------------------------------------------------
+
 ## <a name='dql'></a> Data Query Language, DQL
 ### SELECT
-- Common syntax
+- <a name='common'></a> Common syntax
   ```
   SELECT *
   FROM table
@@ -83,50 +100,50 @@ ALTER TABLE employee ADD CONSTRAINT gender_constraint CHECK (gender = 'Female' O
   ORDER BY [...]
   LIMIT [...]
   ```
-- ORDER BY
+- <a name='orderby'></a> ORDER BY
   ```
   SELECT * FROM employee ORDER BY country_of_birth; (defaul ASC)
   SELECT * FROM employee ORDER BY country_of_birth DESC;
   ```
 
-- DISTINCT-ONLY (Only unique result)
+- <a name='distinct'></a> DISTINCT-ONLY (Only unique result)
   ```
   SELECT DISTINCT country_of_birth FROM employee ORDER BY country_of_birth;
   ```
-- WHERE
+- <a name='where'></a> WHERE
   ```
   SELECT * FROM employee WHERE gender = 'Female' AND (country_of_birth = 'Argentina' OR country_of_birth = 'Brazil');
   ```
-- LIMIT
+- <a name='limit'></a> LIMIT
   ```
   // Will return from 11th to 15th employees
   SELECT * FROM employee OFFSET 10 LIMIT 5;
   // or
   SELECT * FROM employee OFFSET 10 FETCH FIRST 5 ROW ONLY;
   ```
-- IN - is short version of OR-OR-OR
+- <a name='in'></a> IN - is short version of OR-OR-OR
   ```
   SELECT * FROM employee WHERE country_of_birth IN ('China', 'Argentina', 'Brazil');
   ```
-- BETWEEN
+- <a name='between'></a> BETWEEN
   ```
   SELECT * FROM employee WHERE date_of_birth BETWEEN '2019-01-01' AND '2023-01-01';
   ```
-- LIKE & ILIKE
+- <a name='like'></a> LIKE & ILIKE
   ```
   SELECT * FROM employee WHERE email LIKE '%@gmail.%';
   SELECT * FROM employee WHERE email ILIKE '%@gmail.%'; (the same but without register)
   ```
-- GROUP BY, COUNT & HAVING
+- <a name='groupby'></a> GROUP BY, COUNT & HAVING
   ```
   SELECT country_of_birth, COUNT(*) FROM employee
   GROUP BY country_of_birth HAVING COUNT(*) > 10 ORDER BY country_of_birth;
   ```
-- COASLESCE - default value substitute === Null (! NOT empty string "", not string "NULL")
+- <a name='coalesce'></a> COALESCE - default value substitute === Null (! NOT empty string "", not string "NULL")
   ```
   SELECT first_name, COALESCE(email, 'not applicable') as extended_email FROM employee;
   ```
-- MATH
+- <a name='math'></a> MATH
   ```
   SELECT MIN(price) FROM holiday;
   SELECT MAX(price) FROM holiday;
@@ -135,7 +152,7 @@ ALTER TABLE employee ADD CONSTRAINT gender_constraint CHECK (gender = 'Female' O
   SELECT num1 {*, \, +, -, %, !} num2
   ```
 
-#### Joins
+#### <a name='join'></a> JOIN
 ```
 // inner
 SELECT employee.first_name, bicycle.make, bicycle.type, bicycle.price FROM employee
@@ -151,11 +168,11 @@ RIGHT JOIN bicycle ON employee.bicycle_id = bicycle.id;
 
 // full
 SELECT employee.first_name, bicycle.make, bicycle.type, bicycle.price FROM employee
-FULL OUTER JOIN bicycle ON employee.bicycle_id = bicycle.id;
+FULL JOIN bicycle ON employee.bicycle_id = bicycle.id;
 ```
 ![screen](../static/sql_joins.png)
 
-#### Date
+#### <a name='date'></a> Date
 - Just get date()
 ```
 SELECT NOW()[::{DATE, TIME}];
@@ -177,22 +194,22 @@ SELECT first_name, last_name, gender, country_of_birth, AGE(NOW(), date_of_birth
 
 -----------------------------------------------------
 ## <a name='dml'></a> Data Manipulation Language, DML
-#### INSERT
+#### <a name='insert'></a> INSERT
 ```
 INSERT INTO employee (first_name, last_name, gender, email, date_of_birth, country_of_birth) VALUES ('Ari', 'Hay', 'Male', 'panda@pcworld.com', '2022/07/27', 'USA');
 ```
 
-#### DELETE
+#### <a name='delete'></a> DELETE
 ```
 DELETE FROM employee WHERE email LIKE '%@google%' AND country_of_birth = 'China';
 ```
 
-#### UPDATE
+#### <a name='update'></a> UPDATE
 ```
 UPDATE employee SET gender='Psycho' WHERE gender in ('Genderqueer', 'Panda', 'Bigender', 'Genderfluid', 'Polygender', 'Non-binary', 'Agender');
 ```
 
-#### ON CONFLICT DO
+#### <a name='conflict'></a> CONFLICTS
 ```
 // UPDATE IF ENTRY EXIST (UPSERT)
 INSERT INTO employee (id, first_name, last_name, gender, email, date_of_birth, country_of_birth)
@@ -205,13 +222,14 @@ P.S. Also possible ways:
 
 -----------------------------------------------------
 ## <a name='postgres_tools'></a> Postgress tools
-#### <a name='extension'></a> Common syntax
-- `\d [table_name]` - see all tables, or structure of specific table
+#### <a name='syntax'></a>  Common syntax
+- `\d [table_name]` - see specific table
+- `\df` - see documentation of UUID
 - `\dt` - see all tables, but without additional
 - `\i /path/to/file.sql` - import file, and execute content
 - `\copy ... TO /path/to/dump_file` - for dump
 
-#### <a name='csv'></a> DUMP TO CSV
+#### <a name='csv'></a> Dump to CSV
 ```
 \copy (SELECT * FROM employee JOIN bicycle ON employee.bicycle_id = bicycle.id)
 TO '/home/inauris/projects/1.csv' DELIMITER ',' CSV;
