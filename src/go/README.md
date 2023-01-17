@@ -1,0 +1,3 @@
+# Go
+
+My own documentation

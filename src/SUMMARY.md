@@ -6,6 +6,8 @@
   - [Introduction](python/introduction.md)
   - [Flow tools](python/flow_tools.md)
   - [Data structures](python/data_structures.md)
+- [Go](go/README.md)
+  - [Base func](go/base.md)
 - [TTY-tools](tty-tools/README.md)
   - [Git](tty-tools/git.md)
   - [Docker](tty-tools/docker.md)
