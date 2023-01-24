@@ -41,7 +41,7 @@
 ## <a name='ddl'></a> Data Definition Language, DDL
 
 #### <a name='cdtables'></a> CREATE/DELETE tables
-```
+```sql
 CREATE TABLE employee (
 id BIGSERIAL NOT NULL PRIMARY KEY,
 first_name VARCHAR(50) NOT NULL,
@@ -64,25 +64,25 @@ DROP TABLE bicycle;
 
 #### <a name='constraints'></a> ADD/DELETE CONSTRAINTS:
 - PRIMARY KEY
-```
+```sql
 ALTER TABLE employee DROP CONSTRAINT employee_pkey;
 ALTER TABLE employee ADD PRIMARY KEY(id);
 ```
 - FOREIGN KEY
-```
-// Define
+```sql
+-- Define
 ALTER TABLE employee ADD bicycle_id BIGINT REFERENCES bicycle (id);
 ALTER TABLE employee ADD UNIQUE(bicycle_id);
 
-// Create entry
+-- Create entry
 UPDATE employee SET bicycle_id = 2 WHERE id=4;
 ```
 - UNIQUE
-```
+```sql
 ALTER TABLE employee ADD CONSTRAINT unique_email_address UNIQUE (email);
 ```
 - ONLY SPECIFIC VALUE
-```
+```sql
 ALTER TABLE employee ADD CONSTRAINT gender_constraint CHECK (gender = 'Female' OR gender = 'Male' OR gender = 'Psycho');
 ```
 
@@ -90,7 +90,7 @@ ALTER TABLE employee ADD CONSTRAINT gender_constraint CHECK (gender = 'Female' O
 ## <a name='dql'></a> Data Query Language, DQL
 ### SELECT
 - <a name='common'></a> Common syntax
-  ```
+  ```sql
   SELECT *
   FROM table
   JOIN table2 ON [...]
@@ -101,50 +101,50 @@ ALTER TABLE employee ADD CONSTRAINT gender_constraint CHECK (gender = 'Female' O
   LIMIT [...]
   ```
 - <a name='orderby'></a> ORDER BY
-  ```
+  ```sql
   SELECT * FROM employee ORDER BY country_of_birth; (defaul ASC)
   SELECT * FROM employee ORDER BY country_of_birth DESC;
   ```
 
 - <a name='distinct'></a> DISTINCT-ONLY (Only unique result)
-  ```
+  ```sql
   SELECT DISTINCT country_of_birth FROM employee ORDER BY country_of_birth;
   ```
 - <a name='where'></a> WHERE
-  ```
+  ```sql
   SELECT * FROM employee WHERE gender = 'Female' AND (country_of_birth = 'Argentina' OR country_of_birth = 'Brazil');
   ```
 - <a name='limit'></a> LIMIT
-  ```
-  // Will return from 11th to 15th employees
+  ```sql
+  -- Will return from 11th to 15th employees
   SELECT * FROM employee OFFSET 10 LIMIT 5;
-  // or
+  -- or
   SELECT * FROM employee OFFSET 10 FETCH FIRST 5 ROW ONLY;
   ```
 - <a name='in'></a> IN - is short version of OR-OR-OR
-  ```
+  ```sql
   SELECT * FROM employee WHERE country_of_birth IN ('China', 'Argentina', 'Brazil');
   ```
 - <a name='between'></a> BETWEEN
-  ```
+  ```sql
   SELECT * FROM employee WHERE date_of_birth BETWEEN '2019-01-01' AND '2023-01-01';
   ```
 - <a name='like'></a> LIKE & ILIKE
-  ```
+  ```sql
   SELECT * FROM employee WHERE email LIKE '%@gmail.%';
   SELECT * FROM employee WHERE email ILIKE '%@gmail.%'; (the same but without register)
   ```
 - <a name='groupby'></a> GROUP BY, COUNT & HAVING
-  ```
+  ```sql
   SELECT country_of_birth, COUNT(*) FROM employee
   GROUP BY country_of_birth HAVING COUNT(*) > 10 ORDER BY country_of_birth;
   ```
-- <a name='coalesce'></a> COALESCE - default value substitute === Null (! NOT empty string "", not string "NULL")
-  ```
+- <a name='coalesce'></a> COALESCE - default value substitute === `Null` (! NOT empty string `""`, not string `"NULL"`)
+  ```sql
   SELECT first_name, COALESCE(email, 'not applicable') as extended_email FROM employee;
   ```
 - <a name='math'></a> MATH
-  ```
+  ```sql
   SELECT MIN(price) FROM holiday;
   SELECT MAX(price) FROM holiday;
   SELECT ROUND(AVG(price)) FROM holiday;
@@ -153,20 +153,20 @@ ALTER TABLE employee ADD CONSTRAINT gender_constraint CHECK (gender = 'Female' O
   ```
 
 #### <a name='join'></a> JOIN
-```
-// inner
+```sql
+-- inner
 SELECT employee.first_name, bicycle.make, bicycle.type, bicycle.price FROM employee
 JOIN bicycle ON employee.bicycle_id = bicycle.id;
 
-// left
+-- left
 SELECT employee.first_name, bicycle.make, bicycle.type, bicycle.price FROM employee
 LEFT JOIN bicycle ON employee.bicycle_id = bicycle.id;
 
-// right
+-- right
 SELECT employee.first_name, bicycle.make, bicycle.type, bicycle.price FROM employee
 RIGHT JOIN bicycle ON employee.bicycle_id = bicycle.id;
 
-// full
+-- full
 SELECT employee.first_name, bicycle.make, bicycle.type, bicycle.price FROM employee
 FULL JOIN bicycle ON employee.bicycle_id = bicycle.id;
 ```
@@ -174,44 +174,44 @@ FULL JOIN bicycle ON employee.bicycle_id = bicycle.id;
 
 #### <a name='date'></a> Date
 - Just get date()
-```
+```sql
 SELECT NOW()[::{DATE, TIME}];
 ```
 - Go to the past on expressed time
-```
-// (For future use "+")
+```sql
+-- (For future use "+")
 SELECT NOW() - INTERVAL '10 {YEAR, MONTHS, DAYS}';
 ```
 - Get specific parameter from data
-```
-// Possible parameters: (day of the week (first sunday))
+```sql
+-- Possible parameters: (day of the week (first sunday))
 SELECT EXTRACT({YEAR, MONTH, DAY, DOW} FROM NOW());
 ```
 - get difference between 2 dates - AGE
-```
+```sql
 SELECT first_name, last_name, gender, country_of_birth, AGE(NOW(), date_of_birth) as age FROM employee;
 ```
 
 -----------------------------------------------------
 ## <a name='dml'></a> Data Manipulation Language, DML
 #### <a name='insert'></a> INSERT
-```
+```sql
 INSERT INTO employee (first_name, last_name, gender, email, date_of_birth, country_of_birth) VALUES ('Ari', 'Hay', 'Male', 'panda@pcworld.com', '2022/07/27', 'USA');
 ```
 
 #### <a name='delete'></a> DELETE
-```
+```sql
 DELETE FROM employee WHERE email LIKE '%@google%' AND country_of_birth = 'China';
 ```
 
 #### <a name='update'></a> UPDATE
-```
+```sql
 UPDATE employee SET gender='Psycho' WHERE gender in ('Genderqueer', 'Panda', 'Bigender', 'Genderfluid', 'Polygender', 'Non-binary', 'Agender');
 ```
 
 #### <a name='conflict'></a> CONFLICTS
-```
-// UPDATE IF ENTRY EXIST (UPSERT)
+```sql
+-- UPDATE IF ENTRY EXIST (UPSERT)
 INSERT INTO employee (id, first_name, last_name, gender, email, date_of_birth, country_of_birth)
 VALUES (1, 'Jocker', 'Doe', 'Male', 'john.doe@google.com', DATE '2019-12-10', 'Russia')
 ON CONFLICT (id) DO UPDATE SET email = EXCLUDED.email, first_name = EXCLUDED.first_name, gender = EXCLUDED.gender;
@@ -230,26 +230,26 @@ P.S. Also possible ways:
 - `\copy ... TO /path/to/dump_file` - for dump
 
 #### <a name='csv'></a> Dump to CSV
-```
+```sql
 \copy (SELECT * FROM employee JOIN bicycle ON employee.bicycle_id = bicycle.id)
 TO '/home/inauris/projects/1.csv' DELIMITER ',' CSV;
 ```
 
 #### <a name='extension'></a> Extensions
 - See list of extensions:
-```
+```sql
 SELECT * FROM pg_available_extensions;
 ```
 - Install extension:
-```
+```sql
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 ```
 - Usage example:
-```
-// see result
+```sql
+-- see result
 SELECT uuid_generate_v4();
 
-// practical usage
+-- practical usage
 INSERT INTO passport (passport_serial, issue_date, expire_date, country_of_issue) VALUES
 (uuid_generate_v4(), '2020_09_03', '2045_09_03', 'USA');
 ```
