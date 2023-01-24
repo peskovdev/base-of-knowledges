@@ -29,6 +29,7 @@
 - [Programming](programming/README.md)
   - [PostgreSQL](programming/postgresql.md)
   - [SQLAlchemy](programming/sqlalchemy.md)
+  - [Alembic](programming/alembic.md)
   - [Errors](programming/errors.md)
 - [Hosting](hosting/README.md)
   - [SSH-authentication](hosting/ssh-keys.md)
