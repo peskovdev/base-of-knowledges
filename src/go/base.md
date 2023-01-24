@@ -1,6 +1,6 @@
 ### Basic syntax
 
-```
+```go
 package main
 
 // imports
@@ -13,7 +13,7 @@ func main() {
 
 ### vars & pointers
 - define:
-  ```
+  ```go
   var var_name type = value
   var i float64 = 3.1125
   var str string = "blablabla"
@@ -23,7 +23,7 @@ func main() {
   new_str := "value"
   ```
 - pointers
-  ```
+  ```go
   func main() {
     var x = 0
     pointer(&x)
@@ -36,7 +36,7 @@ func main() {
   ```
 
 ### I/O
-```
+```go
 import "fmt"
 
 Println("blablabla")
@@ -45,7 +45,7 @@ Printf("%f", 3.123)
 
 ### if/else & case
 
-```
+```go
 var age = 10
 
 if age < 5 {
@@ -68,7 +68,7 @@ switch age {
 ```
 
 ### Cycles
-```
+```go
 var i = 1
 for i < 10 {
   fmt.Println(i)
@@ -88,7 +88,7 @@ for i, value := range array {
 
 ### Arrays
 - List
-  ```
+  ```go
   var arr[3] int
   arr[0] = 35
   arr[1] = 12
@@ -101,14 +101,14 @@ for i, value := range array {
   }
   ```
 - Slice
-  ```
+  ```go
   // When declaring a slice, you omit its size in the brackets,
   // like this:
   myslice := []string
   // This tells Go that the size of the array underlying the slice can be dynamically changed.
   ```
 - Maps (dict)
-  ```
+  ```go
   // make(map[key-type]value-type)
   web_sites := make(map[string]float64)
 
@@ -120,7 +120,7 @@ for i, value := range array {
 
 ### func
 - Default
-  ```
+  ```go
   func main() {
     summed_result, message := sum(2, 3)
     fmt.Println(message, summed_result)
@@ -132,7 +132,7 @@ for i, value := range array {
   }
   ```
 - замыкания?
-  ```
+  ```go
   var num = 3
   multiple := func() int {
     num *= 2
@@ -142,7 +142,7 @@ for i, value := range array {
   ```
 
 ### defer
-```
+```go
 package main
 
 import "fmt"
@@ -168,7 +168,7 @@ func two () {
 - Install by command: `go get github.com/devpeskov/go_greetings`
 
 ### Replace remote module on local
-```
+```go
 go mod edit -replace github.com/devpeskov/go_greetings=../greetings
 go mod tidy
 ```
