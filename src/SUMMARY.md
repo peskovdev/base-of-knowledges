@@ -27,7 +27,7 @@
   - [Docker](theory/docker.md)
   - [Async](theory/async.md)
 - [Programming](programming/README.md)
-  - [Flask](programming/flask/README.md)
+  - [Flask](programming/flask/index.md)
     - [Flask-SQLAlchemy](programming/flask/flask_sqlalchemy.md)
     - [Flask-Security](programming/flask/flask_security.md)
   - [PostgreSQL](programming/postgresql.md)
