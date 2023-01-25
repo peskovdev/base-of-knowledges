@@ -1,6 +1,5 @@
 # SQLAlchemy
-### Table of content
-
+#### Table of content
 - [ORM Defenition/Configuration](#def)
     - [Imperative Way](#idef)
         - [Defenition](#idef)
@@ -20,6 +19,12 @@
       - [Update](#update)
       - [Delete](#delete)
     - [Raw SQL](#rawsql)
+
+
+#### Official Documentation
+- [Mapping styles](https://docs.sqlalchemy.org/en/14/orm/mapping_styles.html#orm-mapping-styles)
+- [Relationships](https://docs.sqlalchemy.org/en/14/orm/basic_relationships.html)
+- [Cascades](https://docs.sqlalchemy.org/en/14/orm/cascades.html)
 
 -------------------------------------------------
 # <a name='def'></a> Defenition
@@ -157,10 +162,6 @@ class Tag(Base):
 
 Base.metadata.create_all(engine)
 ```
-More about:
-- [Mapping styles](https://docs.sqlalchemy.org/en/14/orm/mapping_styles.html#orm-mapping-styles)
-- [Relationships](https://docs.sqlalchemy.org/en/14/orm/basic_relationships.html)
-- [Cascades](https://docs.sqlalchemy.org/en/14/orm/cascades.html)
 
 -------------------------------------------------
 # <a name='orm'></a> ORM Usage
