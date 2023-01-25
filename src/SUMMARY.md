@@ -6,6 +6,8 @@
   - [Introduction](python/introduction.md)
   - [Flow tools](python/flow_tools.md)
   - [Data structures](python/data_structures.md)
+- [JavaScript](js/README.md)
+  - [Base func](js/base.md)
 - [Go](go/README.md)
   - [Base func](go/base.md)
 - [TTY-tools](tty-tools/README.md)
