@@ -1,6 +1,6 @@
 # Migrations with alembic & SQLAlchemy
 
-Table of content:
+#### Table of contents:
 - [Setup](#setup)
 - [Usage](#usage)
 
