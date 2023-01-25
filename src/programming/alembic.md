@@ -1,5 +1,12 @@
 # Migrations with alembic & SQLAlchemy
-## Setup
+
+Table of content:
+- [Setup](#setup)
+- [Usage](#usage)
+
+[Alembic - official documentation](https://alembic.sqlalchemy.org/en/latest/tutorial.html)
+
+## <a name='setup'></a> Setup
 1) Add packages:
   ```sh
   poetry add sqlalchemy alembic
@@ -38,7 +45,7 @@ from models import Base
 target_metadata = Base.metadata
 ```
 
-## Usage
+## <a name='usage'></a> Usage
 1) Create migrations
 ```sh
 alembic revision -m "Create User model"
