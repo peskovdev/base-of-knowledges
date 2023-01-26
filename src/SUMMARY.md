@@ -8,7 +8,7 @@
   - [Data structures](python/data_structures.md)
 - [JavaScript](js/index.md)
   - [Base syntax](js/base.md)
-  - [My worked examples](js/examples.md)
+  - [My working examples](js/examples.md)
 - [Go](go/README.md)
   - [Base func](go/base.md)
 - [TTY-tools](tty-tools/README.md)
