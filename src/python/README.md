@@ -1,3 +1,0 @@
-# Python
-
-My own documentation
