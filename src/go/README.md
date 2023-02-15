@@ -1,3 +1,0 @@
-# Go
-
-My own documentation
