@@ -10,7 +10,7 @@
 - [JavaScript](js/index.md)
   - [Base syntax](js/base.md)
   - [My working examples](js/examples.md)
-- [Go](go/README.md)
+- [Go](go/index.md)
   - [Base func](go/base.md)
 - [TTY-tools](tty-tools/README.md)
   - [Git](tty-tools/git.md)
