@@ -23,7 +23,7 @@ so we can use the operators on our classes as if they were built-in types.
 - `__new__` - first method that create object,
 takes the class as argument, and others from `__init__`
 - `__init__` - compound with `__new__` constructor of object
-- `__del__` - desctructor (**not defines del(x)!!!**). Define logic with garbage collector.
+- `__del__` - desctructor (**Doesn't define `del x`!!!**). Defines logic with garbage collector.
 -------------------------------------------------------------------------------
 
 ### <a name="comparison"></a> Comparison methods
