@@ -34,6 +34,8 @@
   - [Flask](frameworks/flask/index.md)
     - [Flask-SQLAlchemy](frameworks/flask/flask_sqlalchemy.md)
     - [Flask-Security](frameworks/flask/flask_security.md)
+  - [FastAPI](frameworks/fastapi/index.md)
+    - [Basics](frameworks/fastapi/basics.md)
 - [Databases](databases/index.md)
   - [PostgreSQL](databases/postgresql.md)
   - [SQLAlchemy](databases/sqlalchemy.md)
