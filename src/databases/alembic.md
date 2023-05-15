@@ -48,7 +48,7 @@ target_metadata = Base.metadata
 ## <a name='usage'></a> Usage
 1) Create migrations
 ```sh
-alembic revision -m "Create User model"
+alembic revision --autogenerate -m "Create User model"
 ```
 2) Upgrade
 ```sh
