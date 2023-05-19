@@ -23,5 +23,15 @@ ffmpeg -i .wav -codec:a libmp3lame -qscale:a 2 .mp3
 ffmpeg -i .mp4 .gif
 ```
 
+## Вытянуть звук из видео
+```
+ffmpeg -i .mp4 -vn -ar 44100 -ac 2 -ab 192 -f mp3 new_file.mp3
+```
+
+## Убрать звук из видео
+```
+ffmpeg -i .mp4 -c copy -an .mp4
+```
+
 #### Полезные ссылки:
 [Больше команд на losst.ru](https://losst.ru/poleznye-komandy-ffmpeg)
